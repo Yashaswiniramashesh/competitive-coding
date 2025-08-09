@@ -16,3 +16,4 @@ class Solution:
         if cur < p.val and cur < q.val :
             return self.lowestCommonAncestor(root.right, p, q)
         return root
+        # basically we are trying to identify the split where it is happening
