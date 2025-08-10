@@ -12,7 +12,9 @@ class Solution:
             if (left < root.val < right) is False:
                 return False
             
-            return Valid(root.left, left, root.val) and Valid(root.right, root.val, right)
+            left_flag = Valid(root.left, left, root.val) 
+            right_flag = Valid(root.right, root.val, right)
+            return left_flag and right_flag
 
         return Valid(root, float('-inf'), float('+inf'))
                 
