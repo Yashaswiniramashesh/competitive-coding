@@ -6,8 +6,23 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        def dfs_Valid (root, left, right):
-            if root is None:
+        ele_arr = []
+        
+        def dfs_Valid (root):
+            if not root:
+                return
+            dfs_Valid(root.left)
+            ele_arr.append(root.val)
+            dfs_Valid(root.right)
+            return 
+
+        dfs_Valid(root)
+        print(ele_arr)
+        for i in range(1, len(ele_arr)):
+            if ele_arr[i-1] >= ele_arr[i]:
+                return False
+        return True
+        """          if root is None:
                 return True
             if (left < root.val < right) is False:# preorder processing
                 return False
@@ -17,5 +32,8 @@ class Solution:
             return left_flag and right_flag
 
         return dfs_Valid(root, float('-inf'), float('+inf'))
-                
+        """
+
+
+        
         
