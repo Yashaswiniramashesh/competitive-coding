@@ -5,23 +5,24 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        ele_arr = []
+        self.prev = None
         
         def dfs_valid (root):
             if not root:
-                return
-            dfs_valid(root.left)
-            ele_arr.append(root.val)
-            dfs_valid(root.right)
-            return 
+                return True
 
-        dfs_valid(root)
-        print(ele_arr)
-        for i in range(1, len(ele_arr)):
-            if ele_arr[i-1] >= ele_arr[i]:
+            a = dfs_valid(root.left)
+            if self.prev is not None and self.prev >= root.val:
+                print(self.prev, root.val)
                 return False
-        return True
+            self.prev = root.val
+            b = dfs_valid(root.right)
+
+            return a and b
+
+        return dfs_valid(root)
         """          if root is None:
                 return True
             if (left < root.val < right) is False:# preorder processing
