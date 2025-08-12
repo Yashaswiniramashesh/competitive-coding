@@ -8,15 +8,15 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         ele_arr = []
         
-        def dfs_Valid (root):
+        def dfs_valid (root):
             if not root:
                 return
-            dfs_Valid(root.left)
+            dfs_valid(root.left)
             ele_arr.append(root.val)
-            dfs_Valid(root.right)
+            dfs_valid(root.right)
             return 
 
-        dfs_Valid(root)
+        dfs_valid(root)
         print(ele_arr)
         for i in range(1, len(ele_arr)):
             if ele_arr[i-1] >= ele_arr[i]:
