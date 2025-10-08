@@ -14,8 +14,7 @@ class Solution:
                 top_interval = res[-1]
                 if top_interval[end] >= curr_interval[start]:
                     new_interval = [min(top_interval[start],curr_interval[start]), max(top_interval[end], curr_interval[end])]
-                    res[-1][0] = min(top_interval[start],curr_interval[start])
-                    res[-1][1] = max(top_interval[end], curr_interval[end])
+                    res[-1] = new_interval
                     # res.pop()
                     # res.append(new_interval)
                 else:
