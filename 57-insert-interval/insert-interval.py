@@ -12,7 +12,7 @@ class Solution:
             res.append(intervals[i])
             i += 1
 
-        while i < n and intervals[i][start] <= newInterval[end]:
+        while i < n and newInterval[end]>= intervals[i][start] :
             newInterval[start] = min(intervals[i][start], newInterval[start])
             newInterval[end] = max(intervals[i][end], newInterval[end])
             i += 1
