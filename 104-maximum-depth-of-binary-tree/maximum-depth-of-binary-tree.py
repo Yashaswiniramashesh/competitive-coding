@@ -10,11 +10,7 @@ class Solution:
         def dfs(root):
             if root is None:
                 return 0
-
-            left =  dfs(root.left)
-            right = dfs(root.right)
-
-            return 1+max(left,right)
+            return 1+max(dfs(root.left),dfs(root.right))
         ans = dfs(root)
 
         return ans
