@@ -6,23 +6,22 @@
 #         self.right = right
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        self.max_diff = False
+        def dfs(root):
+            if root is None:
+                return 0
 
-        def depth(curr):
-            if curr is None:
-                return [True, 0]
+            left = dfs(root.left)
+            right = dfs(root.right)
 
-            left = depth(curr.left)
-            right = depth(curr.right)
-            absol = abs(left[1]-right[1])
-            balanced =  absol <= 1 and (left[0] and right[0] )
-            
-            return [balanced,1+ max(left[1], right[1])]
-            
-        if root is None:
+            diff = abs(left-right)
+            if diff > 1:
+                self.max_diff = True
+            return 1+max(left, right)
+
+        dfs(root)
+        if self.max_diff:
+            return False
+        else:
             return True
 
-        res = depth(root)
-
-        return  res[0]
-        
-        
